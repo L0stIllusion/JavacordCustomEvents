@@ -19,7 +19,6 @@ buildscript {
 val outputDir = "$buildDir/generated/"
 
 task("generateListenerInterceptors") {
-    dependsOn(":javacordcustomevents:build")
     val listenerBase: Class<GloballyAttachableListener> = GloballyAttachableListener::class.java
     var interceptorsClassBuilder =
         FileSpec.builder("net.lostillusion.frameworks.javacordcustomevents", "JavacordListeners")
