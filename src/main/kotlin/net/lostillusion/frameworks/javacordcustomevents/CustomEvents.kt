@@ -24,11 +24,12 @@ class CustomEvents {
             listener: CustomEventListener<O>,
             baseListener: Class<L>
         ) = apply {
-            registerDispatcher(baseListener, dispatcher)
+            registerDispatcher(I::class.java, baseListener, dispatcher)
             addCustomListener(listenerName, listener, I::class.java)
         }
 
         inline fun <reified BaseListener : GloballyAttachableListener, reified I : Event, O : CustomEvent<I>> registerDispatcher(
+            eventClass: Class<I>,
             listenerClass: Class<BaseListener>,
             dispatcher: CustomEventDispatcher<I, O>
         ) = apply {
