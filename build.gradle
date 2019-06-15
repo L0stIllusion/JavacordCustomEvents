@@ -26,8 +26,11 @@ idea {
     }
 }
 
+apply from: 'gradle/listener-interceptor-generation.gradle.kts'
+
 task 'generate'
 
 generate.setDependsOn(tasks.findAll { it.name != "generate" && it.name.startsWith("generate") })
 
-apply from: 'gradle/listener-interceptor-generation.gradle.kts'
+compileJava.dependsOn(generate)
+
