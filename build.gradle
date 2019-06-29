@@ -30,7 +30,8 @@ apply from: 'gradle/listener-interceptor-generation.gradle.kts'
 
 task 'generate'
 
+generateListenerInterceptors.outputs.upToDateWhen { false }
+
 generate.setDependsOn(tasks.findAll { it.name != "generate" && it.name.startsWith("generate") })
 
-compileKotlin.dependsOn(generate)
-
+compileKotlin.dependsOn generate

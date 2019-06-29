@@ -95,9 +95,12 @@ task("generateListenerInterceptors") {
                 ))
             .initializer(CodeBlock.of(initText.toString(), *initArgs.toArray(arrayOf<TypeName>())))
             .build()
-    //BUILD THE FUCKING CLASS
-    interceptorsClassBuilder
-        .addProperty(interceptorMap)
-        .build()
-        .writeTo(File(outputDir))
+    doLast {
+        mkdir(outputDir)
+        //BUILD THE FUCKING CLASS
+        interceptorsClassBuilder
+            .addProperty(interceptorMap)
+            .build()
+            .writeTo(File(outputDir))
+    }
 }
