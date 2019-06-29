@@ -8,8 +8,13 @@ plugins {
 group 'net.lostillusion.frameworks'
 version '1.0-SNAPSHOT'
 
+task('sourcesJar', type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
 artifacts {
-    archives kotlinSourcesJar
+    archives sourcesJar
 }
 
 repositories {
