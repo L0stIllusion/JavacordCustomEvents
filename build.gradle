@@ -26,6 +26,10 @@ idea {
     }
 }
 
+artifacts {
+    archives kotlinSourcesJar
+}
+
 apply from: 'gradle/listener-interceptor-generation.gradle.kts'
 
 task 'generate'
